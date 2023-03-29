@@ -1,0 +1,49 @@
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="updateEmployeeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee {{list.editEmployee?.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" ngModel="{{list.editEmployee?.name}}" name="name" class="form-control" id="name"
+                            aria-describedly="emailHelp" placeholder="Name">
+                    </div>
+                    <input type="hidden" ngModel="{{list.editEmployee?.id}}" name="id" class="form-control" id="id"
+                        placeholder="Email">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" ngModel="{{list.editEmployee?.email}}" name="email" class="form-control"
+                            id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="jobTitle">Job title</label>
+                        <input type="text" ngModel="{{list.editEmployee?.jobTitle}}" name="jobTitle" class="form-control"
+                            id="jobTitle" placeholder="Job title">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" ngModel="{{list.editEmployee?.phone}}" name="phone" class="form-control"
+                            id="phone" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Image URL</label>
+                        <input type="text" ngModel="{{list.editEmployee?.imageUrl}}" name="imageUrl" class="form-control"
+                            id="imageUrl" placeholder="Image URL">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button (click)="onUpdateEmployee(editForm.value)" type="submit" data-dismiss="modal"
+                            class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

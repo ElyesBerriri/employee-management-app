@@ -1,0 +1,33 @@
+<mat-card class="card">
+    <mat-card-content>
+        <div class="card-body row">
+            <div class="col">
+                <a href=""><img src="{{emp.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+            </div>
+            <div class="col card-title align-self-center mb-0">
+                <h5>{{emp.name}}</h5>
+                <p class="m-0">{{emp.jobTitle}}</p>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{emp.email}}</a></li>
+            <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{emp.phone}}</li>
+        </ul>
+        <div class="card-body">
+            <div class="float-right btn-group btn-group-sm">
+                <a (click)="onOpenModal('edit')" class="btn btn-info tooltips" data-toggle="modal"
+                    data-target="#updateEmployeeModal"><i class="fa fa-user"></i> </a>
+                <a (click)="onOpenModal('delete')" class="btn btn-secondary tooltips" data-toggle="modal"
+                    data-target="#deleteEmployeeModal"><i class="fa fa-minus"></i></a>
+            </div>
+            <ul class="social-links list-inline mb-0">
+                <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                        href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+                <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                        href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                        href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+            </ul>
+        </div>
+    </mat-card-content>
+</mat-card>

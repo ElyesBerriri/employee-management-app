@@ -1,0 +1,15 @@
+.form-control:focus{
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.myrow1{
+  min-width: max-content;
+}
+.myrow2{
+  min-width: max-content;
+}
+@media (max-width: 600px ) {
+  .myrow2{
+    min-width: 245px;
+  }
+}
