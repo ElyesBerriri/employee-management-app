@@ -1,29 +1,33 @@
 package com.backend.controllers;
 
-import com.backend.Dto.LoginDTO;
-import com.backend.Dto.UserDTO;
-import com.backend.payload.response.LoginMessage;
-import com.backend.services.UserServiceInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
-@CrossOrigin
-@RequestMapping("/user")
+@RequestMapping("/api/test")
 public class UserController {
-    @Autowired
-    private UserServiceInterface userServiceInterface;
-
-    @PostMapping("/register")
-    public String saveUser(@RequestBody UserDTO userDTO){
-        return userServiceInterface.addUser(userDTO);
+    @GetMapping("/all")
+    public String allAccess() {
+        return "Public Content.";
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
-        LoginMessage loginMessage = userServiceInterface.loginUser(loginDTO);
-        return ResponseEntity.ok(loginMessage);
+    @GetMapping("/user")
+    public String userAccess() {
+        return "User Content.";
     }
 
+    @GetMapping("/mod")
+    public String moderatorAccess() {
+        return "Moderator Board.";
+    }
+
+    @GetMapping("/admin")
+    public String adminAccess() {
+        return "Admin Board.";
+    }
 }
