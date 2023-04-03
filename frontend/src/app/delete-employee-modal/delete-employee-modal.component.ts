@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '../_services/employee.service';
 import { ListComponent } from '../list/list.component';
 
 @Component({
@@ -13,11 +13,9 @@ export class DeleteEmployeeModalComponent {
   constructor(private employeeService: EmployeeService, public list: ListComponent){}
 
   public onDeleteEmployee(employeeId: number | undefined) : void {
-    document.getElementById('add-employee-form')?.click();
     if(employeeId){
     this.employeeService.deleteEmployee(employeeId).subscribe(
       (response: void) => {
-        console.log(response);
         this.list.getEmployees();
         this.list.getAllEmployees();
       },

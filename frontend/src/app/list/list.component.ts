@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { Employee } from '../_models/employee';
 import { HttpErrorResponse } from '@angular/common/http';
+import { EmployeeService } from '../_services/employee.service';
 
 @Component({
   selector: 'app-list',
@@ -29,6 +29,7 @@ export class ListComponent implements OnInit{
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        window.location.assign('login');
       }
     );
   }

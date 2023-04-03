@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { Employee } from '../_models/employee';
+import { EmployeeService } from '../_services/employee.service';
 import { ListComponent } from '../list/list.component';
 
 @Component({
@@ -18,7 +18,6 @@ export class AddEmployeeModalComponent {
     document.getElementById('add-employee-form')?.click();
     this.employeeService.addEmployee(addForm.value).subscribe(
       (response: Employee) => {
-        console.log(response);
         this.list.getEmployees();
         this.list.getAllEmployees();
         addForm.reset();

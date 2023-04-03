@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { Employee } from '../_models/employee';
+import { EmployeeService } from '../_services/employee.service';
 import { ListComponent } from '../list/list.component';
 
 @Component({
@@ -16,7 +16,6 @@ export class EditEmployeeModalComponent {
   public onUpdateEmployee(employee: Employee) : void {
     this.employeeService.updateEmployee(employee).subscribe(
       (response: Employee) => {
-        console.log(response);
         this.list.getEmployees();
         this.list.getAllEmployees();
       },

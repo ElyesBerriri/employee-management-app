@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="row row-cols-auto mt-3">
+        <div class="col d-flex justify-content-center" *ngFor="let user of users">
+            <app-card [user]="user" [isUser]="true"></app-card>
+        </div>
+    </div>
+</div>
