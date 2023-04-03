@@ -47,7 +47,6 @@ export class ListComponent implements OnInit{
   }
   
   public searchEmployees(key: string): void{
-    console.log(key);
     const results: Employee[] = [];
     for (const employee of this.getAllEmployees()){
       if(employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
