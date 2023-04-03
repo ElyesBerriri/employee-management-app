@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        window.location.assign("/home");
+        window.location.assign('home');
       },
       err => {
         if(err.error)this.errorMessage = err.error.message;
