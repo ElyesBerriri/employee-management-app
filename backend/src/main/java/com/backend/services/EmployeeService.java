@@ -1,7 +1,7 @@
 package com.backend.services;
 
 import com.backend.models.Employee;
-import com.backend.repositories.EmployeeRepo;
+import com.backend.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +9,25 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-    private final EmployeeRepo employeeRepo;
+    private final EmployeeRepository employeeRepository;
     @Autowired
-    public EmployeeService(EmployeeRepo employeeRepo) {
-        this.employeeRepo = employeeRepo;
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     public Employee addEmployee(Employee employee) {
-        return employeeRepo.save(employee);
+        return employeeRepository.save(employee);
     }
 
     public List<Employee> findAllEmployees() {
-        return employeeRepo.findAll();
+        return employeeRepository.findAll();
     }
 
     public Employee updateEmployee(Employee employee){
-        return employeeRepo.save(employee);
+        return employeeRepository.save(employee);
     }
 
     public void deleteEmployee(Long id){
-        employeeRepo.deleteById(id);
+        employeeRepository.deleteById(id);
     }
 }

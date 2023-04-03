@@ -1,19 +1,22 @@
 package com.backend.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.backend.models.Employee;
+import com.backend.models.User;
+import com.backend.models.UserDetailsImpl;
+import com.backend.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backend.models.User;
-import com.backend.repositories.UserRepo;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    UserRepo userRepository;
+    private final UserRepository userRepository;
 
     @Override
     @Transactional
@@ -24,4 +27,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return UserDetailsImpl.build(user);
     }
 
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
 }

@@ -1,33 +1,31 @@
 package com.backend.controllers;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.backend.models.User;
+import com.backend.services.UserDetailsServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/user")
 public class UserController {
+    private final UserDetailsServiceImpl userDetailsService;
+
+    public UserController(UserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     @GetMapping("/all")
-    public String allAccess() {
-        return "Public Content.";
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> users = userDetailsService.findAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/user")
-    public String userAccess() {
-        return "User Content.";
-    }
-
-    @GetMapping("/mod")
-    public String moderatorAccess() {
-        return "Moderator Board.";
-    }
-
-    @GetMapping("/admin")
-    public String adminAccess() {
-        return "Admin Board.";
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
+        userDetailsService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
