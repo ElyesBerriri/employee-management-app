@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { UsersComponent } from './users/users.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,12 @@ import { UsersComponent } from './users/users.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [authInterceptorProviders,UsersComponent,ListComponent],
+  providers: [
+    authInterceptorProviders,
+    UsersComponent,
+    ListComponent,
+    { provide: APP_BASE_HREF, useValue: environment.baseHref }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
