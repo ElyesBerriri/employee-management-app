@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:8080',
+  apiBaseUrl: 'https://employee-management-app-bpqd.onrender.com',
   baseHref: '/employee-management-app/'
 };

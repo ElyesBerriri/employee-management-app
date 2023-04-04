@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(authenticationJwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
+                .requestMatchers("/health").permitAll()
                 .requestMatchers("/auth/signup").permitAll()
                 .requestMatchers("/auth/signin").permitAll()
                 .requestMatchers("/user/**").hasRole("ADMIN")
