@@ -33,9 +33,10 @@ In addition to these features, the application also includes functionality for u
 
 ## Setup
 
-Before running the application, you need to creat a PostgreSQL database. You can use any PostgreSQL server of your choice, such as a local installation or a cloud service.
-Then create a file named `application.properties` in the folder `resources` ( path: /backend/src/main/resources ) and write inside it these lines :
-
+Inorder to setup the application, you need to follow these steps:  
+1. Creat a PostgreSQL database. You can use any PostgreSQL server of your choice, such as a local installation or a cloud service.  
+2. Clone this repository to your local machine.  
+3. Create a file named `application.properties` in the folder `resources` ( path: /backend/src/main/resources ) and write inside it these lines:  
 `spring.datasource.url=jdbc:postgresql://localhost:your_db_port__default_5432/your_db_name`  
 `spring.datasource.username=your_db_username_default__postgres`  
 `spring.datasource.password=your_db_password`  
@@ -43,11 +44,10 @@ Then create a file named `application.properties` in the folder `resources` ( pa
 `spring.jpa.defer-datasource-initialization=true`  
 `spring.sql.init.mode=always`  
 `backend.app.jwtSecret=IUzI1NiJ9eyJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4MDU5NDI1MiwiaWF0IjoxNjgwNTk0M`  
-`backend.app.jwtExpirationMs=300000`
-
-Note : Don't forget to replace your database credentials instead of mine in the previous lines.
+`backend.app.jwtExpirationMs=300000`  
+### Note : Don't forget to replace your database credentials instead of mine in the previous lines.
 
 ## Running the Application
 
-To run the application, make sure you have Docker installed on your machine. Then, clone this repository to your local machine and navigate to the project directory. Finally, run the following command : `docker-compose up`  
+To run the application, make sure you have Docker installed and is already running on your machine. Then navigate to the project directory and run the following command: `docker-compose up`  
 This will start the application and make it available at http://localhost:4200.
