@@ -36,13 +36,13 @@ In addition to these features, the application also includes functionality for u
 Before running the application, you need to creat a PostgreSQL database. You can use any PostgreSQL server of your choice, such as a local installation or a cloud service.
 Then create a file named `application.properties` in the folder `resources` ( path: /backend/src/main/resources ) and write inside it these lines :
 
-`spring.datasource.url=jdbc:postgresql://localhost:your_db_port__default_5432/your_db_name  `
-`spring.datasource.username=your_db_username_default__postgres  `
-`spring.datasource.password=your_db_password  `
-`spring.jpa.hibernate.ddl-auto=update  `
-`spring.jpa.defer-datasource-initialization=true  `
-`spring.sql.init.mode=always  `
-`backend.app.jwtSecret=IUzI1NiJ9eyJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4MDU5NDI1MiwiaWF0IjoxNjgwNTk0M  `
+`spring.datasource.url=jdbc:postgresql://localhost:your_db_port__default_5432/your_db_name`  
+`spring.datasource.username=your_db_username_default__postgres`  
+`spring.datasource.password=your_db_password`  
+`spring.jpa.hibernate.ddl-auto=update`  
+`spring.jpa.defer-datasource-initialization=true`  
+`spring.sql.init.mode=always`  
+`backend.app.jwtSecret=IUzI1NiJ9eyJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4MDU5NDI1MiwiaWF0IjoxNjgwNTk0M`  
 `backend.app.jwtExpirationMs=300000`
 
 Note : Don't forget to replace your database credentials instead of mine in the previous lines.
