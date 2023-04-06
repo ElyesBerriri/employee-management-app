@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backendemployeemanagement
+    ports:
+      - 8080:8080
+
+  frontend:
+    build: ./frontend
+    container_name: frontendemployeemanagement
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
