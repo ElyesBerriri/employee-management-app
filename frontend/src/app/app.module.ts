@@ -19,6 +19,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { UsersComponent } from './users/users.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { environment } from 'src/environments/environment';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

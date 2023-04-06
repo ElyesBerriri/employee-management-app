@@ -1,4 +1,6 @@
-<div class="col-md-12">
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+<div class="col-md-12" *ngIf="!isLoading">
     <div class="card card-container">
         <img class="shadow rounded profile-img-card" src="assets/myicon.ico" width="80px"/>
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>

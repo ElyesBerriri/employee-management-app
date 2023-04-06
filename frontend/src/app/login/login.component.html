@@ -1,4 +1,6 @@
-<div class="col-md-12">
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+<div class="col-md-12" *ngIf="!isLoading">
     <div class="card card-container">
         <img class="shadow rounded profile-img-card" src="assets/myicon.ico" width="80px" />
         <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -34,7 +36,7 @@
         </form>
 
         <div class="alert alert-success mt-5" *ngIf="isLoggedIn">
-            Hello <b>{{ username }}</b> you are logged in as 
+            Hello <b>{{ username }}</b> you are logged in as
             <i *ngIf="roles.length===1">User</i>
             <i *ngIf="roles.length===2">Admin</i>.
         </div>

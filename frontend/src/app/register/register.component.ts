@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,7 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  isLoading = true;
   form: any = {
     username: null,
     email: null,
@@ -16,9 +18,16 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private loadingService: LoadingService) { }
 
   ngOnInit(): void {
+    this.loadingService.getHealth().subscribe({
+      next: () => { this.isLoading = true; },
+      error: async () => {
+        await new Promise(f => setTimeout(f, 10000));
+        window.location.reload();
+      }
+    });
   }
 
   onSubmit(): void {
