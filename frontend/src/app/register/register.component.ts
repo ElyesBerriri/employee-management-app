@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { LoadingService } from '../_services/loading.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import { LoadingService } from '../_services/loading.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  isLoading = true;
+  isLoading = environment.production;
   form: any = {
     username: null,
     email: null,
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
 
   constructor(private authService: AuthService, private loadingService: LoadingService) { }
-
+  
   ngOnInit(): void {
     this.loadingService.getHealth().subscribe({
       next: () => { this.isLoading = false; },
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
       data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        window.location.assign('login');
       },
       err => {
         if(err.error)this.errorMessage = err.error.message;

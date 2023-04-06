@@ -1,6 +1,6 @@
 # Employee Management App
  
- This is a CRUD (Create, Read, Update, Delete) employee manager demo built with Spring Boot and Angular. The frontend of the application is hosted on GitHub Pages ( https://elyesberriri.github.io/employee-management-app ), while the backend is hosted on Render ( https://employee-management-app-bpqd.onrender.com/health ). The application is also Dockerized, which means you can easily run it with `docker-compose up`. 
+ This is a CRUD (Create, Read, Update, Delete) employee manager demo built with Spring Boot and Angular. The frontend of the application is hosted on GitHub Pages (https://elyesberriri.github.io/employee-management-app), while the backend is hosted on Render (https://employee-management-app-bpqd.onrender.com/health). The application is also Dockerized, which means you can easily run it with `docker-compose up`. 
 
 ## Table of Contents
 * [Technologies Used](#technologies-used)
@@ -36,8 +36,8 @@ In addition to these features, the application also includes functionality for u
 Inorder to setup the application, you need to follow these steps:  
 1. Creat a PostgreSQL database. You can use any PostgreSQL server of your choice, such as a local installation or a cloud service.  
 2. Clone this repository to your local machine.  
-3. Create a file named `application.properties` in the folder `resources` ( path: /backend/src/main/resources ) and write inside it these lines:  
-`spring.datasource.url=jdbc:postgresql://localhost:your_db_port__default_5432/your_db_name`  
+3. Create a file named `application.properties` in the folder `resources` (path: /backend/src/main/resources) and write inside it these lines:  
+`spring.datasource.url=jdbc:postgresql://host.docker.internal:your_db_port__default_5432/your_db_name`  
 `spring.datasource.username=your_db_username_default__postgres`  
 `spring.datasource.password=your_db_password`  
 `spring.jpa.hibernate.ddl-auto=update`  
@@ -45,7 +45,9 @@ Inorder to setup the application, you need to follow these steps:
 `spring.sql.init.mode=always`  
 `backend.app.jwtSecret=IUzI1NiJ9eyJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4MDU5NDI1MiwiaWF0IjoxNjgwNTk0M`  
 `backend.app.jwtExpirationMs=300000`  
-### Note : Don't forget to replace your database credentials instead of mine in the previous lines.
+### Notes: 
+- Don't forget to replace your database credentials instead of mine in the previous lines.
+- If you want to run the app without docker you should change the host (host.docker.internal) to your host (default: localhost).
 
 ## Running the Application
 

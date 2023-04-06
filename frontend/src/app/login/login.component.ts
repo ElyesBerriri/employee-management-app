@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { LoadingService } from '../_services/loading.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoadingService } from '../_services/loading.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isLoading = true;
+  isLoading = environment.production;
   form: any = {
     username: null,
     password: null
@@ -22,7 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private loadingService: LoadingService) { }
 
   ngOnInit(): void {
-
     if (this.tokenStorage.getToken()) {
       this.isLoading = false;
       this.isLoggedIn = true;
