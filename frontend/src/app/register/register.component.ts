@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingService.getHealth().subscribe({
-      next: () => { this.isLoading = true; },
+      next: () => { this.isLoading = false; },
       error: async () => {
         await new Promise(f => setTimeout(f, 10000));
         window.location.reload();
