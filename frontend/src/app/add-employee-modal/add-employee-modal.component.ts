@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Employee } from '../_models/employee';
 import { EmployeeService } from '../_services/employee.service';
 import { ListComponent } from '../list/list.component';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-add-employee-modal',
@@ -12,7 +13,7 @@ import { ListComponent } from '../list/list.component';
 })
 export class AddEmployeeModalComponent {
 
-  constructor(private employeeService: EmployeeService, private list: ListComponent){}
+  constructor(private employeeService: EmployeeService, private list: ListComponent, private tokenStorageService: TokenStorageService){}
 
   public onAddEmployee(addForm: NgForm) : void {
     document.getElementById('add-employee-form')?.click();
@@ -25,6 +26,8 @@ export class AddEmployeeModalComponent {
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
+        this.tokenStorageService.signOut();
+        window.location.assign('login');
       }
     )
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../_models/employee';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EmployeeService } from '../_services/employee.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +17,7 @@ export class ListComponent implements OnInit{
   public deleteEmployee: Employee | undefined;
   public allEmployees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService){}
+  constructor(private employeeService: EmployeeService, private tokenStorageService: TokenStorageService){}
 
   ngOnInit() {
     this.getEmployees();
@@ -29,6 +30,7 @@ export class ListComponent implements OnInit{
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.tokenStorageService.signOut();
         window.location.assign('login');
       }
     );
@@ -41,6 +43,8 @@ export class ListComponent implements OnInit{
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.tokenStorageService.signOut();
+        window.location.assign('login');
       }
     );
     return this.allEmployees;

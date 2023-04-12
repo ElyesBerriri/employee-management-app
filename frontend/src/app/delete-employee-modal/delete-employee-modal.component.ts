@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EmployeeService } from '../_services/employee.service';
 import { ListComponent } from '../list/list.component';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-delete-employee-modal',
@@ -10,7 +11,7 @@ import { ListComponent } from '../list/list.component';
 })
 export class DeleteEmployeeModalComponent {
 
-  constructor(private employeeService: EmployeeService, public list: ListComponent){}
+  constructor(private employeeService: EmployeeService, public list: ListComponent, private tokenStorageService: TokenStorageService){}
 
   public onDeleteEmployee(employeeId: number | undefined) : void {
     if(employeeId){
@@ -21,6 +22,8 @@ export class DeleteEmployeeModalComponent {
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.tokenStorageService.signOut();
+        window.location.assign('login');
       }
     )}
   }
