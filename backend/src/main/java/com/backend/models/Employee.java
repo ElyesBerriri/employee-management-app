@@ -23,9 +23,13 @@ public class Employee {
     @Column(name = "imageurl")
     private String imageUrl;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Employee() {
     }
-    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+    public Employee(String name, String email, String jobTitle, String phone, String imageUrl) {
         this.name = name;
         this.email = email;
         this.jobTitle = jobTitle;

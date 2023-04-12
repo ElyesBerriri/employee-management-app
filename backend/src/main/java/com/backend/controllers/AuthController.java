@@ -1,6 +1,7 @@
 package com.backend.controllers;
 
 import com.backend.models.*;
+import com.backend.repositories.EmployeeRepository;
 import com.backend.repositories.RoleRepository;
 import com.backend.repositories.UserRepository;
 import com.backend.utils.JwtUtils;
@@ -32,6 +33,8 @@ public class AuthController {
 	private final AuthenticationManager authenticationManager;
 
 	private final UserRepository userRepository;
+
+	private final EmployeeRepository employeeRepository;
 
 	private final RoleRepository roleRepository;
 
@@ -91,6 +94,27 @@ public class AuthController {
 		roles.add(userRole);
 		user.setRoles(roles);
 		userRepository.save(user);
+
+		List<String> names = List.of("Mike Brown","Bob Johnson","Tom Davis",
+				"David Lee","John Doe");
+		List<String> emails = List.of("mike.brown@example.com","bobjohnson@example.com","tom.davis@example.com",
+				"david.lee@example.com","johndoe@example.com");
+		List<String> jobtitles = List.of("Web Developer","Project Manager","Human Resources Manager",
+				"Marketing Manager","Software Engineer");
+		List<String> phones = List.of("+1 555-789-0123","+1-555-9999999","+1 555-456-7890",
+				"+1 555-901-2348","+1-555-1234567");
+		List<String> urls = List.of("https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-06-768x766.png",
+				"https://thumbs.dreamstime.com/b/avatar-d-homme-de-connaisseur-104871313.jpg",
+				"https://as1.ftcdn.net/v2/jpg/01/87/17/86/1000_F_187178666_GyusuEACf98LSRUmYiUOvIPKv6X4MErT.jpg",
+				"https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-01.png",
+				"https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-02-768x768.png");
+
+		for(int i=0;i<names.size();i++){
+			Employee employee = new Employee(names.get(i), emails.get(i), jobtitles.get(i), phones.get(i), urls.get(i));
+			employee.setUser(user);
+			employeeRepository.save(employee);
+		}
+
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 
